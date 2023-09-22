@@ -1,0 +1,37 @@
+20170699 Jinsung Choi
+
+(1) 
+- Bellman-Ford
+For Bellman-ford, I used 1-dimensional array to keep track of shortest path value and current node in the path.
+I created a structure edge, which contains information about edge
+(source vertex, destination vertex, edge weight)
+I assigned n as the number of nodes and m as number of edges and stored all edge information given by input.
+Then, if source vertex specified I ran Bellman-ford one time.
+If source vertex not specified, I ran Bellman-ford for all vertices to compute APSP.
+In Bellman-ford, I updated the value in distance array and path array if I encounter minimum.
+I checked negative-cycle by running loop in Bellman-Ford one more time
+
+- Floyd-Warshall
+For Floyd-Warshall, I used 1-dimensional array to keep track of shortest path value and current node in the path.
+I created a structure edge, which contains information about edge
+(source vertex, destination vertex, edge weight)
+I assigned n as the number of nodes and m as number of edges and stored all edge information given by input.
+Then I ran Floyd-Warshall.
+In Floyd-Warshall, I updated the value in distance array and path array if I encounter minimum.
+I checked negative cycle at the end.
+
+(2)
+I checked the performance by running bf and fw on large graph(vertices about 1000, edges about 50000)
+If no negative cycle, fw finish much faster than bg
+bf:
+real	3m20.060s
+user	3m20.039s
+sys	0m0.008s
+
+fw:
+real	0m8.054s
+user	0m8.053s
+sys	0m0.000s
+
+However, with negative-cycle, bf ends right away after on Bellmen-ford since it detects it but fw ends after all iteration finished. Therefore fw shows slower time but not significantly slower.
+I was able to check with m>>n, fw is more time efficient than running n bf.
