@@ -1,0 +1,46 @@
+20170699 Jinsung Choi
+
+(1) In quick.c, I implemented quick sort with 4 different methods of choosing pivot and computed the number of comparisons I make for each method for a given input.
+
+- long long int count_comparison: global variable to keep track of number of comparisons
+
+- int ChoosePivot(int *array, int start_position, int end_position, int pivot_choice)
+: for a given array with index of first and last element as start_position, end_position, chooses pivot based on pivot_choice value
+: pivot_choice can have four values: 1,2,3,4
+: 1: first element, 2: last element, 3: random element, 4: median-of-three
+: returns the index of the pivot element
+: for median-of-three method, it counts the number of comparisons and increment count_comparison
+
+- void swap(int *x, int *y)
+: function to swap two element
+
+- int Partition(int *array, int start_position, int end_position)
+: for a given array, partition based on the first element value
+
+- void QuickSort(int *array, int start_position, int end_position, int pivot_choice)
+: for a given array, compute quick sort algorithm with pivot chosen based on pivot_choice value
+: find the pivot element using ChoosePivot function and swap with first element
+: partition the array based on the pivot element(first element now) value
+: recursively call QuickSort on two partitioned array
+: every time partition is made for length m array, increment count_comparison by m-1
+
+- int main(void)
+: for a given input, compute the number of comparisons made for each pivot choice
+
+
+(2) In minfine.c, the optimal order of jobs to execute is in order of Fi/Ki value in decreasing order. Therefore, for a given input, I computed Fi/Ki value for each job and sorted in decreasing order. Then I printed out their original index. If job number n is executed, then total fine increases by Kn*(sum of Fi for all the remaining jobs). Therefore, we can compute the fine need to purchased by incrementing it every time we choose the next job to be executed.
+
+- struct FidivKi_index
+: structure to store Fi/Ki values and index of the given job
+
+- int Compare_FidivKi(const void *a, const void *b)
+: compare function for struct FidivKi_index based on Fi/Ki values(decreasing  order)
+
+- int main(void)
+: for a given input, compute the optimal order and fine
+
+
+(3) If we assume we obtained the optimal order, if we switch the order of two adjacent job(a,b), total fine increments by Fa*Kb-Fb*Ka. We already assumed that initial order was optimal so  Fa*Kb-Fb*Ka should be positive. Then, Fa*Kb>Fb*Ka, meaning Fa/Ka>Fb/Kb. Therefore, in the optimal order, job with higher Fi/Ki value should come first.
+
+
+(4) I collaborated with 문준석
