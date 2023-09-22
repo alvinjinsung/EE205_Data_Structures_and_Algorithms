@@ -1,0 +1,9 @@
+20170699 Jinsung Choi
+
+(1) In msort.c, if nmemb is 1(the base case), it just returns. If it is not 1, it divides the group into left and right group and call msort in each recursively. Then, merge left and right group by comparing 1 element each form each group. Since it has to compare any type given the compare function, I was cautious in pointing at the right memory location.
+
+(2) In dist.c, the optimal location where the sum of the distances to customers address is the median. Therefore, I computed where the median is, and calculated the distances and add them all. 
+
+(3) The only thing we need to do is to find the optimal location where the sum of the distances is minimum. Let's first put our house to be at the left infinite and bring them to the right on-by-one. The sum will decrease until it reaches the leftmost address of the customers. Then, as we keep moving our house to the right one-by-one, let's say the number of customers houses on the left side be x and number of customers houses on the right side be y. If we move our house one spot to the right, the distances between our house and left group will increase by 1 for each customer, and the distance between our house and right group will decrease by 1 for each customer. Therefore, The distance will differ by x-y. If x<y the sum of distances will decrease. It will keep decreasing until x>y. Therefore, it will keep decreasing until it meets the median and increase again after it passes median. Therefore, the optimal location is the median of customers address. If the number of the customers is odd, the median location is optima. If it is even, any location between the two middle-most point can be the answer. I chose one of the two middle-most point. 
+
+(4) no collaborators.
